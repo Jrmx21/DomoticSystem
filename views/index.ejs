@@ -37,7 +37,7 @@
   </style>
 </head>
 <body>
-  <h1>Monitor de Temperatura y Humedad</h1>
+  <h1>Sensores Casa RP</h1>
   <div class="card">
     <div class="label">Temperatura</div>
     <div class="value"><%= currentData.temperature %> °C</div>
@@ -45,6 +45,9 @@
   <div class="card">
     <div class="label">Humedad</div>
     <div class="value"><%= currentData.humidity %> %</div>
+  </div>
+  <div class="card">
+    <div class="value">Última actualización: <%=currentData.lastValue%></div>
   </div>
   <script>
     // Refrescar automáticamente cada 5 segundos

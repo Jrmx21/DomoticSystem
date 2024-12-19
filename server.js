@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3000;
 
 // Almacenamiento en memoria de los datos actuales
-let currentData = { temperature: 0, humidity: 0 };
+let currentData = { temperature: 0, humidity: 0 , lastValue: Date.now()};
 
 // Configuración de middleware
 app.use(bodyParser.json());
@@ -19,6 +19,7 @@ app.post('/data', (req, res) => {
   // Actualizar los datos actuales
   currentData.temperature = temperature;
   currentData.humidity = humidity;
+  currentData.lastValue = Date.now();
 
   console.log(`Datos actualizados: Temperatura: ${temperature} °C, Humedad: ${humidity} %`);
   res.status(200).json({ message: 'Datos recibidos correctamente' });
