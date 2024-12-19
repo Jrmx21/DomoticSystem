@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitor de Sensor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa; /* Cyan claro */
+      color: #006064; /* Cyan oscuro */
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #004d40;
+    }
+    .card {
+      display: inline-block;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin: 20px;
+      width: 250px;
+    }
+    .value {
+      font-size: 2rem;
+      color: #00796b;
+      font-weight: bold;
+    }
+    .label {
+      font-size: 1.2rem;
+      color: #004d40;
+    }
+  </style>
+</head>
+<body>
+  <h1>Monitor de Temperatura y Humedad</h1>
+  <div class="card">
+    <div class="label">Temperatura</div>
+    <div class="value"><%= currentData.temperature %> °C</div>
+  </div>
+  <div class="card">
+    <div class="label">Humedad</div>
+    <div class="value"><%= currentData.humidity %> %</div>
+  </div>
+  <script>
+    // Refrescar automáticamente cada 5 segundos
+    setInterval(() => {
+      fetch('/')
+        .then(response => response.text())
+        .then(html => {
+          document.open();
+          document.write(html);
+          document.close();
+        });
+    }, 5000);
+  </script>
+</body>
+</html>
