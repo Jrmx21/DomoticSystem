@@ -46,8 +46,8 @@
     <div class="label">Humedad</div>
     <div class="value"><%= currentData.humidity %> %</div>
   </div>
-  <div class="card">
-    <div class="value">Última actualización: <%=currentData.lastValue%></div>
+  <div>
+    <p class="last-update">Última actualización: <%= lastPostDate %></p>
   </div>
   <script>
     // Refrescar automáticamente cada 5 segundos

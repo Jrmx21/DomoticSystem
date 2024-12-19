@@ -19,15 +19,17 @@ app.post('/data', (req, res) => {
   // Actualizar los datos actuales
   currentData.temperature = temperature;
   currentData.humidity = humidity;
-  currentData.lastValue = Date.now();
+  currentData.lastValue = Date.now();  // Actualizamos la hora del último POST
 
   console.log(`Datos actualizados: Temperatura: ${temperature} °C, Humedad: ${humidity} %`);
+
   res.status(200).json({ message: 'Datos recibidos correctamente' });
 });
 
 // Ruta para mostrar los datos en la vista
 app.get('/', (req, res) => {
-  res.render('index', { currentData });
+  const lastPostDate = new Date(currentData.lastValue).toLocaleString();
+  res.render('index', { currentData, lastPostDate });
 });
 
 // Iniciar el servidor
